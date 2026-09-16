@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Track Application</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🇮🇳 Transparent India
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Track</a>
+        <a href="complaint.html">Complaint</a>
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <h1>
+        Track Your Application
+    </h1>
+
+    <input
+        id="applicationId"
+        placeholder="Enter Application ID"
+    >
+
+    <button onclick="trackApplication()">
+        Track
+    </button>
+
+
+    <div id="result"></div>
+
+</div>
+
+
+<script>
+
+async function trackApplication() {
+
+    const id =
+        document.getElementById("applicationId").value;
+
+    const response = await fetch(
+        `http://127.0.0.1:8000/applications/${id}`
+    );
+
+    const data = await response.json();
+
+    const result =
+        document.getElementById("result");
+
+
+    if (data.error) {
+
+        result.innerHTML = `
+            <div class="error">
+                Application not found
+            </div>
+        `;
+
+        return;
+    }
+
+
+    result.innerHTML = `
+
+        <div class="application-card">
+
+            <h2>${data.service}</h2>
+
+            <p>
+                <b>Application ID:</b>
+                ${data.application_id}
+            </p>
+
+            <p>
+                <b>Status:</b>
+                ${data.status}
+            </p>
+
+            <p>
+                <b>Days Passed:</b>
+                ${data.days_passed}
+            </p>
+
+            <p>
+                <b>Expected Days:</b>
+                ${data.expected_days}
+            </p>
+
+            <h3>
+                ${data.delay_status}
+            </h3>
+
+        </div>
+
+    `;
+
+}
+
+</script>
+
+</body>
+
+</html>

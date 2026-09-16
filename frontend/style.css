@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f7fb;
+
+    color: #102f64;
+
+}
+
+
+header {
+
+    background: #184791;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 18px 8%;
+
+}
+
+
+.logo {
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+}
+
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    margin-left: 25px;
+
+}
+
+
+.hero {
+
+    min-height: 430px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px;
+
+}
+
+
+.hero h1 {
+
+    font-size: 48px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.hero p {
+
+    font-size: 18px;
+
+    max-width: 650px;
+
+    line-height: 1.6;
+
+}
+
+
+button {
+
+    background: #184791;
+
+    color: white;
+
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+}
+
+
+button:hover {
+
+    background: #102f64;
+
+}
+
+
+.features {
+
+    display: flex;
+
+    gap: 25px;
+
+    justify-content: center;
+
+    padding: 40px 8%;
+
+}
+
+
+.card {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    width: 280px;
+
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+
+}
+
+
+.container {
+
+    max-width: 850px;
+
+    margin: 60px auto;
+
+    padding: 30px;
+
+}
+
+
+input,
+textarea {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin: 15px 0;
+
+    border: 1px solid #ccd4e0;
+
+    border-radius: 7px;
+
+    font-size: 16px;
+
+}
+
+
+textarea {
+
+    height: 180px;
+
+}
+
+
+.application-card {
+
+    background: white;
+
+    padding: 25px;
+
+    margin-top: 30px;
+
+    border-radius: 12px;
+
+    border-left: 5px solid #184791;
+
+}
+
+
+.error {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    background: #ffe8e8;
+
+    color: #a00000;
+
+    border-radius: 8px;
+
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Submit Complaint</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🇮🇳 Transparent India
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="dashboard.html">Track</a>
+
+        <a href="complaint.html">Complaint</a>
+
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <h1>AI Complaint Analysis</h1>
+
+    <p>Enter your complaint details below.</p>
+
+
+    <input
+        id="category"
+        placeholder="Category (example: Water Supply)"
+    >
+
+    <input
+        id="department"
+        placeholder="Department (example: Municipal Corporation)"
+    >
+
+    <input
+        id="state"
+        placeholder="State (example: Karnataka)"
+    >
+
+    <input
+        id="city"
+        placeholder="City (example: Bengaluru)"
+    >
+
+    <input
+        id="status"
+        placeholder="Status (example: Pending)"
+    >
+
+    <input
+        id="pending_days"
+        type="number"
+        placeholder="Pending Days"
+    >
+
+    <input
+        id="escalated"
+        placeholder="Escalated? (Yes/No)"
+    >
+
+
+    <button onclick="analyzeComplaint()">
+        Analyze Complaint
+    </button>
+
+
+    <div id="analysis"></div>
+
+</div>
+
+
+<script>
+
+async function analyzeComplaint() {
+
+    const data = {
+
+        category: document.getElementById("category").value,
+
+        department: document.getElementById("department").value,
+
+        state: document.getElementById("state").value,
+
+        city: document.getElementById("city").value,
+
+        status: document.getElementById("status").value,
+
+        pending_days: Number(
+            document.getElementById("pending_days").value
+        ),
+
+        escalated: document.getElementById("escalated").value
+
+    };
+
+
+    try {
+
+        const response = await fetch(
+            "/predict-complaint",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+            }
+        );
+
+
+        const result = await response.json();
+
+
+        document.getElementById("analysis").innerHTML = `
+
+            <div class="application-card">
+
+                <h2>🤖 AI Complaint Analysis</h2>
+
+                <p>
+                    <b>Predicted Priority:</b>
+                    ${result.predicted_priority}
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+    catch (error) {
+
+        document.getElementById("analysis").innerHTML = `
+
+            <div class="application-card">
+
+                <h2>❌ Error</h2>
+
+                <p>
+                    Could not connect to the AI server.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
