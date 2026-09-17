@@ -5,6 +5,29 @@ from backend.database import SessionLocal, Application
 
 # Load AI model
 model = joblib.load("complaint_priority_model.pkl")
+# Create a demo application if it does not exist
+db = SessionLocal()
+
+demo_application = (
+    db.query(Application)
+    .filter(Application.application_id == "APP001")
+    .first()
+)
+
+if not demo_application:
+    demo_application = Application(
+        application_id="APP001",
+        citizen_name="Gouthami",
+        service="Income Certificate",
+        status="Processing",
+        days_passed=5,
+        expected_days=10
+    )
+
+    db.add(demo_application)
+    db.commit()
+
+db.close()
 
 # Page settings
 st.set_page_config(
