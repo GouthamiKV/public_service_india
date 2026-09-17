@@ -3,3 +3,7 @@ uvicorn
 sqlalchemy
 pydantic
 python-multipart
+pandas
+joblib
+streamlit
+scikit-learn
